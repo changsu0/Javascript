@@ -53,7 +53,6 @@ public class EgovBindingInitializer implements WebBindingInitializer {
 	public void initBinder(WebDataBinder binder, WebRequest request) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 		dateFormat.setLenient(false);
-		System.out.println("test");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
 	}
