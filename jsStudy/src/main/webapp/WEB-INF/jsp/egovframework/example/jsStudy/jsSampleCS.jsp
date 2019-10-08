@@ -30,13 +30,42 @@
 </head>
 
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
-창수 테스트
+<input type="button" class="tab" value="btn1" />
+<input type="button" class="tab" value="btn2" />
+<input type="button" class="tab" value="btn3" />
+<input type="button" class="tab" value="btn4" />
+<input type="button" class="tab" value="btn5" />
 </body>
 
 <script>
 $( document ).ready(function() {
-    alert('Hi 창수');
+	
+	// 함수 표현식의 클로저 실행
+	// 함수가 실행 되기 전 함수에 값을 전달하기위해 사용
+	// 함수가 실행 되기 전 값을 전달하지않으면 for문의 length값(즉 마지막 값)만 함수에 전달되게 됨
+	function tabsHandler(index) {
+	    return function tabClickEvent(event) {
+	        // 바깥 함수인 tabsHandler 의 index 인자를 여기서 접근할 수 있다.
+	        console.log(index); // 탭을 클릭할 때 마다 해당 탭의 index 값을 표시
+	    };
+	}
+	
+	var tabs = document.querySelectorAll('.tab');
+	var i;
+	
+	for (i = 0; i < tabs.length; i += 1) {
+	    tabs[i].onclick = tabsHandler(i);
+	}
+	
+	
+	logMessage();
 });
+
+// 함수의 표현식
+var logMessage = function () {
+  console.log('An anonymous function');
+};
+
 </script>
 
 </html>
